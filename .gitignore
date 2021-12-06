@@ -9,3 +9,6 @@ Results/*
 *.tsv
 *.xlsx
 *.csv
+*.html
+*.png
+*.jpg
