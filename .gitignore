@@ -1,0 +1,11 @@
+Data/*
+Results/*
+*.fsf
+*.txt
+*.nii.gz
+*.nii
+*.vtk
+*.json
+*.tsv
+*.xlsx
+*.csv
