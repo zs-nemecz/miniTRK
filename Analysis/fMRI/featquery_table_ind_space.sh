@@ -2,7 +2,7 @@
 SECOND_LEVEL_PATH='/mnt/d/Zsuzsa/HCCCL/miniTRK/Results/01_MRI/fMRI_SecondLevel'
 # add subjects 546563 968873 317132
 echo "ID;Task;CopeNr;Mask;Hemi;Area;FeatqueryNr;Mean%" >> featquery_table.csv
-for subject in `cat test_subjects.txt`; do
+for subject in `cat subjects.txt`; do
 	echo ${subject}
 	for task in OBJ LOC; do
 		echo ${task}

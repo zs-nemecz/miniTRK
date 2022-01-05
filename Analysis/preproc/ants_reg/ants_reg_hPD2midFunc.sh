@@ -1,10 +1,10 @@
 #!/bin/bash
 
-OUT_PATH='/mnt/d/Zsuzsa/HCCCL/miniTRK/Results/01_MRI/ANTS_REG'
-hPD_PATH='/mnt/d/Zsuzsa/HCCCL/miniTRK/Data/01_MRI/bids'
-midFunc_PATH='/mnt/d/Zsuzsa/HCCCL/miniTRK/Results/01_MRI/fMRI_Preproc'
-wbPD_PATH='/mnt/d/Zsuzsa/HCCCL/miniTRK/Results/01_MRI/BrainExtraction'
-ASHS_PATH='/mnt/d/Zsuzsa/HCCCL/miniTRK//Results/01_MRI/ASHS'
+OUT_PATH='../../../Results/01_MRI/ANTS_REG'
+hPD_PATH='../../../Data/01_MRI/bids'
+midFunc_PATH='../../../Results/01_MRI/fMRI_Preproc'
+wbPD_PATH='../../../Results/01_MRI/BrainExtraction'
+ASHS_PATH='../../../Results/01_MRI/ASHS'
 
 for i in `cat missed_subjects.txt`; do
 
@@ -40,9 +40,8 @@ for i in `cat missed_subjects.txt`; do
 			-d 3 \
 			-i ${ASHS_PATH}/${i}/masks/${i}_${hemi}_${mask}_mask.nii.gz \
 			-r ${midFunc_PATH}/sub-${i}_task-OBJ_acq-ENC_run-1_bold_mid_brain.nii.gz \
-			-t ${OUT_PATH}/${i}/wbPD2midFunc1Warp.nii.gz \
+		    -t [${OUT_PATH}/${i}/wbPD2hPD0GenericAffine.mat, 1] \
 			-t ${OUT_PATH}/${i}/wbPD2midFunc0GenericAffine.mat \
-			-t [${OUT_PATH}/${i}/wbPD2hPD0GenericAffine.mat, 1] \
 			-n GenericLabel \
 		    -o ${OUT_PATH}/${i}/${i}_${hemi}_${mask}2midFunc.nii.gz
 		done

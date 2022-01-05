@@ -17,7 +17,7 @@ declare -A uthr=( ["CA1"]=${CA1_t[1]} ["CA3DG"]=${CA3DG_t[1]} ["SUB"]=${SUB_t[1]
  ["ERC"]=${ERC_t[1]} ["PRC"]=${PRC_t[1]} ["PHC"]=${PHC_t[1]})
 
 
-for subj in `cat subjects.txt`
+for subj in `cat template_subjects.txt`
 do 
 	echo ${subj}
 	mkdir ${IOPATH}/${subj}/masks/
@@ -26,11 +26,11 @@ do
 	do
 		echo "$mask - lower: ${thr[$mask]} upper: ${uthr[$mask]}"
 		
-		# treshold image according to defined values and binarize
-		# left
+		## treshold image according to defined values and binarize
+		## left
 		fslmaths ${IOPATH}/${subj}/final/${subj}_left_lfseg_corr_usegray.nii.gz \
 		-thr ${thr[$mask]} -uthr ${uthr[$mask]} -bin ${IOPATH}/${subj}/masks/${subj}_left_${mask}_mask
-		# right
+		## right
 		fslmaths ${IOPATH}/${subj}/final/${subj}_right_lfseg_corr_usegray.nii.gz \
 		-thr ${thr[$mask]} -uthr ${uthr[$mask]} -bin ${IOPATH}/${subj}/masks/${subj}_right_${mask}_mask
 	done
