@@ -6,10 +6,11 @@ midFunc_PATH='../../../Results/01_MRI/fMRI_Preproc'
 wbPD_PATH='../../../Results/01_MRI/BrainExtraction'
 ASHS_PATH='../../../Results/01_MRI/ASHS'
 
-for i in `cat missed_subjects.txt`; do
+for i in `cat subjects.txt`; do
 
 	mkdir ${OUT_PATH}/${i}
 	## 1. Register wbPD to hPD (we will use the inverse of this transformation)
+	## with affine transformation
 	antsRegistrationSyNQuick.sh \
 	-d 3 \
 	-f ${hPD_PATH}/sub-${i}/anat/sub-${i}_acq-highres_PDw.nii.gz \
@@ -18,6 +19,8 @@ for i in `cat missed_subjects.txt`; do
 	-o ${OUT_PATH}/${i}/wbPD2hPD
 
 	## 2. Register wbPD to midFunc (resulting transorfmation matrix will be used as is)
+	## Use Syn (non-linear) method. 
+	## Note: only the affine transform matrix is used later, as this seems to work better. 
 	antsRegistrationSyNQuick.sh \
 	-d 3 \
 	-f ${midFunc_PATH}/sub-${i}_task-OBJ_acq-ENC_run-1_bold_mid_brain.nii.gz \
@@ -29,7 +32,7 @@ done
 
 ## 3. Appy transforms on all ROI masks
 
-for i in `cat missed_subjects.txt`; do
+for i in `cat subjects.txt`; do
 	echo ${i}
 
 	for mask in CA1 CA3DG SUB ERC PRC PHC;
