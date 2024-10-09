@@ -1,0 +1,39 @@
+#!/bin/bash
+
+module load ants
+
+OUT_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/ANTS_REG'
+T1_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/BrainExtraction'
+
+
+mkdir ${OUT_PATH}/T1_to_MNI/%PARTICIPANT%
+
+# NOTE: for regular individual T1, change input to _corrected_brain (these are bias field corrected)
+# For the template, we use the regular template file, as inuts are already bias field corrected
+
+## 1. Register T1 to MNI template
+antsRegistrationSyNQuick.sh \
+-d 3 \
+-f ${OUT_PATH}/MNI152_T1_1mm_brain.nii.gz \
+-m ${T1_PATH}/sub-%PARTICIPANT%_T1w_brain.nii.gz \
+-t s \
+-o ${OUT_PATH}/T1_to_MNI/%PARTICIPANT%/%PARTICIPANT%_T1-To-MNI_
+
+## 2. Apply inverse transforms to MTL mask
+antsApplyTransforms \
+-d 3 \
+-i ${OUT_PATH}/mask_MTL.nii.gz \
+-o ${OUT_PATH}/T1_to_MNI/%PARTICIPANT%/%PARTICIPANT%_MTL_mask-To-T1.nii.gz \
+-n GenericLabel \
+-r ${T1_PATH}/sub-%PARTICIPANT%_T1w_brain.nii.gz \
+-t [${OUT_PATH}/T1_to_MNI/%PARTICIPANT%/%PARTICIPANT%_T1-To-MNI_0GenericAffine.mat, 1] \
+-t ${OUT_PATH}/T1_to_MNI/%PARTICIPANT%/%PARTICIPANT%_T1-To-MNI_1InverseWarp.nii.gz
+
+## 4. Apply inverse transforms to MNI (MNI to T1) for sanity checks
+antsApplyTransforms \
+-d 3 \
+-i ${OUT_PATH}/MNI152_T1_1mm_brain.nii.gz \
+-o ${OUT_PATH}/T1_to_MNI/%PARTICIPANT%/%PARTICIPANT%_MNI-To-T1.nii.gz \
+-r ${T1_PATH}/sub-%PARTICIPANT%_T1w_brain.nii.gz \
+-t [${OUT_PATH}/T1_to_MNI/%PARTICIPANT%/%PARTICIPANT%_T1-To-MNI_0GenericAffine.mat, 1] \
+-t ${OUT_PATH}/T1_to_MNI/%PARTICIPANT%/%PARTICIPANT%_T1-To-MNI_1InverseWarp.nii.gz

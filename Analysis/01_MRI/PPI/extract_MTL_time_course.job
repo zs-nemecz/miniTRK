@@ -1,0 +1,12 @@
+#!/bin/bash
+
+module load fsl
+
+IN_PATH="/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/fMRI_Preproc/UNIVAR/GROUP_SPACE/%PARTICIPANT%/%PARTICIPANT%_task-%TASK%_acq-%ACQ%_run-%NRUN%.feat"
+OUT_PATH="/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/PPI"
+ANTS_PATH="/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/ANTS_REG/ROIs"
+
+for roi in left_PHC right_PHC left_PRC right_PRC left_MPIB_CA3DG right_MPIB_CA3DG left_MPIB_CA1 right_MPIB_CA1 left_MPIB_SUB right_MPIB_SUB;
+  do
+    fslmeants -i ${IN_PATH}/filtered_func_data.nii.gz -o ${OUT_PATH}/timecourses/%PARTICIPANT%_%TASK%_%ACQ%_%NRUN%_${roi}_timecourse.txt -m ${ANTS_PATH}/%PARTICIPANT%/C-mask_%PARTICIPANT%_${roi}-To-meanFunc_%TASK%_%NRUN%.nii.gz
+done

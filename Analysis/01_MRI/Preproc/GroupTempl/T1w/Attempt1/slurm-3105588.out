@@ -1,0 +1,268 @@
+All_Command_lines_OK
+Using single precision for computations.
+=============================================================================
+The composite transform comprises the following transforms (in order): 
+  1. Center of mass alignment using fixed image: /home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/GroupTempl/T1w/T_template0.nii.gz and moving image: /home/mpib/nemecz/Projects/miniTRK/Analysis/01_MRI/Preproc/GroupTempl/T1w/sub-396248_T1w.nii.gz (type = Euler3DTransform)
+=============================================================================
+  number of levels = 4
+  fixed image: /home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/GroupTempl/T1w/T_template0.nii.gz
+  moving image: /home/mpib/nemecz/Projects/miniTRK/Analysis/01_MRI/Preproc/GroupTempl/T1w/sub-396248_T1w.nii.gz
+Dimension = 3
+Number of stages = 1
+Use Histogram Matching true
+Winsorize image intensities true
+Lower quantile = 0.01
+Upper quantile = 0.99
+Stage 1 State
+   Image metric = Mattes
+     Fixed image = Image (0x5588ce12bfe0)
+  RTTI typeinfo:   itk::Image<float, 3u>
+  Reference Count: 2
+  Modified Time: 1667
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1452
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [192, 256, 256]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [192, 256, 256]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [192, 256, 256]
+  Spacing: [1, 1, 1]
+  Origin: [95.0313, 100.538, -154.123]
+  Direction: 
+-0.999853 -0.014134 -0.00966312
+0.014129 -0.9999 0.000586045
+-0.00967044 0.000449429 0.999953
+
+  IndexToPointMatrix: 
+-0.999853 -0.014134 -0.00966312
+0.014129 -0.9999 0.000586045
+-0.00967044 0.000449429 0.999953
+
+  PointToIndexMatrix: 
+-0.999853 0.014129 -0.00967044
+-0.014134 -0.9999 0.000449429
+-0.00966312 0.000586045 0.999953
+
+  Inverse Direction: 
+-0.999853 0.014129 -0.00967044
+-0.014134 -0.9999 0.000449429
+-0.00966312 0.000586045 0.999953
+
+  PixelContainer: 
+    ImportImageContainer (0x5588ce138970)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, float>
+      Reference Count: 1
+      Modified Time: 1449
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x7fd862016010
+      Container manages memory: true
+      Size: 12582912
+      Capacity: 12582912
+
+     Moving image = Image (0x5588ce12f5c0)
+  RTTI typeinfo:   itk::Image<float, 3u>
+  Reference Count: 2
+  Modified Time: 1668
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1665
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [192, 256, 256]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [192, 256, 256]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [192, 256, 256]
+  Spacing: [1, 1, 1]
+  Origin: [90.0925, 91.1377, -159.943]
+  Direction: 
+-0.999708 0.00972689 0.0221373
+-0.00709597 -0.993228 0.115964
+0.0231153 0.115773 0.993007
+
+  IndexToPointMatrix: 
+-0.999708 0.00972689 0.0221373
+-0.00709597 -0.993228 0.115964
+0.0231153 0.115773 0.993007
+
+  PointToIndexMatrix: 
+-0.999708 -0.00709597 0.0231153
+0.00972689 -0.993228 0.115773
+0.0221373 0.115964 0.993007
+
+  Inverse Direction: 
+-0.999708 -0.00709597 0.0231153
+0.00972689 -0.993228 0.115773
+0.0221373 0.115964 0.993007
+
+  PixelContainer: 
+    ImportImageContainer (0x5588ce12d1a0)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, float>
+      Reference Count: 1
+      Modified Time: 1662
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x7fd85f015010
+      Container manages memory: true
+      Size: 12582912
+      Capacity: 12582912
+
+     Weighting = 1
+     Sampling strategy = regular
+     Number of bins = 32
+     Radius = 4
+     Sampling percentage  = 0.25
+   Transform = Rigid
+     Gradient step = 0.1
+     Update field sigma (voxel space) = 0
+     Total field sigma (voxel space) = 0
+     Update field time sigma = 0
+     Total field time sigma  = 0
+     Number of time indices = 0
+     Number of time point samples = 0
+Registration using 1 total stages.
+
+Stage 0
+  iterations = 1000x500x250x0
+  convergence threshold = 1e-06
+  convergence window size = 10
+  number of levels = 4
+  using the Mattes MI metric (number of bins = 32, weight = 1)
+  preprocessing:  winsorizing the image intensities
+  preprocessing:  histogram matching the images
+  Shrink factors (level 1 out of 4): [6, 6, 6]
+  Shrink factors (level 2 out of 4): [4, 4, 4]
+  Shrink factors (level 3 out of 4): [2, 2, 2]
+  Shrink factors (level 4 out of 4): [1, 1, 1]
+  smoothing sigmas per level: [3, 2, 1, 0]
+  regular sampling (percentage = 0.25)
+
+*** Running Euler3DTransform registration ***
+
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -8.723016381264e-01, inf, 6.0436e-01, 6.0436e-01, 
+ 2DIAGNOSTIC,     2, -8.737809658051e-01, inf, 6.1202e-01, 7.6599e-03, 
+ 2DIAGNOSTIC,     3, -8.752934336662e-01, inf, 6.1955e-01, 7.5259e-03, 
+ 2DIAGNOSTIC,     4, -8.768137693405e-01, inf, 6.2709e-01, 7.5431e-03, 
+ 2DIAGNOSTIC,     5, -8.778323531151e-01, inf, 6.3448e-01, 7.3850e-03, 
+ 2DIAGNOSTIC,     6, -8.782342076302e-01, inf, 6.4184e-01, 7.3621e-03, 
+ 2DIAGNOSTIC,     7, -8.784507513046e-01, inf, 6.5127e-01, 9.4359e-03, 
+ 2DIAGNOSTIC,     8, -8.785753250122e-01, inf, 6.5947e-01, 8.1959e-03, 
+ 2DIAGNOSTIC,     9, -8.785963654518e-01, inf, 6.6769e-01, 8.2150e-03, 
+ 2DIAGNOSTIC,    10, -8.789154291153e-01, 4.554995975923e-04, 6.7617e-01, 8.4841e-03, 
+ 2DIAGNOSTIC,    11, -8.791502714157e-01, 3.024142351933e-04, 6.8440e-01, 8.2290e-03, 
+ 2DIAGNOSTIC,    12, -8.791410326958e-01, 1.872891880339e-04, 6.9191e-01, 7.5159e-03, 
+ 2DIAGNOSTIC,    13, -8.791767954826e-01, 1.113348480430e-04, 7.0026e-01, 8.3439e-03, 
+ 2DIAGNOSTIC,    14, -8.792297244072e-01, 7.229208131321e-05, 7.0963e-01, 9.3689e-03, 
+ 2DIAGNOSTIC,    15, -8.792451620102e-01, 5.408421202446e-05, 7.1796e-01, 8.3330e-03, 
+ 2DIAGNOSTIC,    16, -8.792927861214e-01, 4.231163620716e-05, 7.2518e-01, 7.2191e-03, 
+ 2DIAGNOSTIC,    17, -8.795458674431e-01, 3.717136496562e-05, 7.3278e-01, 7.5958e-03, 
+ 2DIAGNOSTIC,    18, -8.798723220825e-01, 3.745143112610e-05, 7.4141e-01, 8.6360e-03, 
+ 2DIAGNOSTIC,    19, -8.803006410599e-01, 4.182701377431e-05, 7.5427e-01, 1.2855e-02, 
+ 2DIAGNOSTIC,    20, -8.805330395699e-01, 5.077666719444e-05, 7.6267e-01, 8.4052e-03, 
+ 2DIAGNOSTIC,    21, -8.805723786354e-01, 5.857045107405e-05, 7.7188e-01, 9.2080e-03, 
+ 2DIAGNOSTIC,    22, -8.805465102196e-01, 5.985328607494e-05, 7.7911e-01, 7.2351e-03, 
+ 2DIAGNOSTIC,    23, -8.804957866669e-01, 5.529922054848e-05, 7.8759e-01, 8.4710e-03, 
+ 2DIAGNOSTIC,    24, -8.805108070374e-01, 4.694366725744e-05, 7.9511e-01, 7.5221e-03, 
+ 2DIAGNOSTIC,    25, -8.805083036423e-01, 3.514060153975e-05, 8.0250e-01, 7.3960e-03, 
+ 2DIAGNOSTIC,    26, -8.805429339409e-01, 2.210605453001e-05, 8.1178e-01, 9.2740e-03, 
+ 2DIAGNOSTIC,    27, -8.805549144745e-01, 1.123876063502e-05, 8.1995e-01, 8.1720e-03, 
+ 2DIAGNOSTIC,    28, -8.805156946182e-01, 3.426539933571e-06, 8.2741e-01, 7.4649e-03, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -7.712513804436e-01, inf, 1.5290e+00, 7.0157e-01, 
+ 2DIAGNOSTIC,     2, -7.720988988876e-01, inf, 1.5620e+00, 3.3055e-02, 
+ 2DIAGNOSTIC,     3, -7.726903557777e-01, inf, 1.5927e+00, 3.0683e-02, 
+ 2DIAGNOSTIC,     4, -7.729848623276e-01, inf, 1.6234e+00, 3.0690e-02, 
+ 2DIAGNOSTIC,     5, -7.730168700218e-01, inf, 1.6637e+00, 4.0287e-02, 
+ 2DIAGNOSTIC,     6, -7.730205655098e-01, inf, 1.7043e+00, 4.0583e-02, 
+ 2DIAGNOSTIC,     7, -7.730165719986e-01, inf, 1.7432e+00, 3.8909e-02, 
+ 2DIAGNOSTIC,     8, -7.730194330215e-01, inf, 1.7797e+00, 3.6524e-02, 
+ 2DIAGNOSTIC,     9, -7.730101346970e-01, inf, 1.8113e+00, 3.1627e-02, 
+ 2DIAGNOSTIC,    10, -7.730081677437e-01, 1.061422517523e-04, 1.8479e+00, 3.6604e-02, 
+ 2DIAGNOSTIC,    11, -7.729938626289e-01, 4.271053330740e-05, 1.8842e+00, 3.6213e-02, 
+ 2DIAGNOSTIC,    12, -7.730001211166e-01, 1.206459000969e-05, 1.9165e+00, 3.2369e-02, 
+ 2DIAGNOSTIC,    13, -7.729952335358e-01, 1.642158281356e-06, 1.9537e+00, 3.7208e-02, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -6.806255578995e-01, inf, 2.8875e+00, 9.3377e-01, 
+ 2DIAGNOSTIC,     2, -6.807344555855e-01, inf, 3.1311e+00, 2.4358e-01, 
+ 2DIAGNOSTIC,     3, -6.807742118835e-01, inf, 3.4968e+00, 3.6574e-01, 
+ 2DIAGNOSTIC,     4, -6.807744503021e-01, inf, 3.7431e+00, 2.4625e-01, 
+ 2DIAGNOSTIC,     5, -6.807736158371e-01, inf, 4.0850e+00, 3.4195e-01, 
+ 2DIAGNOSTIC,     6, -6.807735562325e-01, inf, 4.3698e+00, 2.8480e-01, 
+ 2DIAGNOSTIC,     7, -6.807730197906e-01, inf, 4.6518e+00, 2.8200e-01, 
+ 2DIAGNOSTIC,     8, -6.807731986046e-01, inf, 4.9103e+00, 2.5847e-01, 
+ 2DIAGNOSTIC,     9, -6.807730197906e-01, inf, 5.2145e+00, 3.0421e-01, 
+ 2DIAGNOSTIC,    10, -6.807724833488e-01, 1.066349432222e-05, 5.4699e+00, 2.5537e-01, 
+ 2DIAGNOSTIC,    11, -6.807725429535e-01, 4.231252205500e-06, 5.7165e+00, 2.4666e-01, 
+ 2DIAGNOSTIC,    12, -6.807723045349e-01, 2.491211034794e-06, 5.9616e+00, 2.4504e-01, 
+ 2DIAGNOSTIC,    13, -6.807723641396e-01, 2.311342541361e-06, 6.2166e+00, 2.5498e-01, 
+ 2DIAGNOSTIC,    14, -6.807726025581e-01, 2.184161758123e-06, 6.4624e+00, 2.4581e-01, 
+ 2DIAGNOSTIC,    15, -6.807723045349e-01, 2.050389639408e-06, 6.7481e+00, 2.8579e-01, 
+ 2DIAGNOSTIC,    16, -6.807723641396e-01, 1.940540641954e-06, 6.9970e+00, 2.4881e-01, 
+ 2DIAGNOSTIC,    17, -6.807724833488e-01, 1.837411218730e-06, 7.2459e+00, 2.4892e-01, 
+ 2DIAGNOSTIC,    18, -6.807723641396e-01, 1.750037881720e-06, 7.5345e+00, 2.8866e-01, 
+ 2DIAGNOSTIC,    19, -6.807723045349e-01, 1.668545110078e-06, 7.7862e+00, 2.5166e-01, 
+ 2DIAGNOSTIC,    20, -6.807723045349e-01, 1.584584310876e-06, 8.0353e+00, 2.4911e-01, 
+ 2DIAGNOSTIC,    21, -6.807723641396e-01, 1.511710365776e-06, 8.2531e+00, 2.1781e-01, 
+ 2DIAGNOSTIC,    22, -6.807724833488e-01, 1.443330688744e-06, 8.4983e+00, 2.4517e-01, 
+ 2DIAGNOSTIC,    23, -6.807724833488e-01, 1.382033360642e-06, 8.7448e+00, 2.4652e-01, 
+ 2DIAGNOSTIC,    24, -6.807725429535e-01, 1.331386442871e-06, 8.9935e+00, 2.4867e-01, 
+ 2DIAGNOSTIC,    25, -6.807725429535e-01, 1.279221919503e-06, 9.2383e+00, 2.4479e-01, 
+ 2DIAGNOSTIC,    26, -6.807724833488e-01, 1.230323960044e-06, 9.4614e+00, 2.2319e-01, 
+ 2DIAGNOSTIC,    27, -6.807725429535e-01, 1.187216184917e-06, 9.7062e+00, 2.4474e-01, 
+ 2DIAGNOSTIC,    28, -6.807724833488e-01, 1.143660711023e-06, 9.9501e+00, 2.4392e-01, 
+ 2DIAGNOSTIC,    29, -6.807724833488e-01, 1.101579755414e-06, 1.0199e+01, 2.4938e-01, 
+ 2DIAGNOSTIC,    30, -6.807724833488e-01, 1.061861894414e-06, 1.0453e+01, 2.5375e-01, 
+ 2DIAGNOSTIC,    31, -6.807724237442e-01, 1.024526909532e-06, 1.0698e+01, 2.4453e-01, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -6.195834875107e-01, inf, 1.3343e+01, 2.6454e+00, 
+  Elapsed time (stage 0): 1.4482e+01
+
+
+Total elapsed time: 1.4483e+01
+Using single precision for computations.
+Input scalar image: /home/mpib/nemecz/Projects/miniTRK/Analysis/01_MRI/Preproc/GroupTempl/T1w/sub-396248_T1w.nii.gz
+Reference image: /home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/GroupTempl/T1w/T_template0.nii.gz
+=============================================================================
+The composite transform comprises the following transforms (in order): 
+  1. /home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/GroupTempl/T1w/rigid10_0GenericAffine.mat (type = AffineTransform)
+=============================================================================
+Default pixel value: 0
+Interpolation type: LinearInterpolateImageFunction
+Output warped image: /home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/GroupTempl/T1w/rigid10_0_sub-396248_T1w.nii.gz

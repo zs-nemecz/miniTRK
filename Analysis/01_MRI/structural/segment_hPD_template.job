@@ -1,0 +1,5 @@
+#!/bin/bash
+
+module load ashs
+
+$ASHS_ROOT/bin/ashs_main.sh -I GroupTempl -a /opt/software/ashs/data/1.0/ashs_atlas_upennpmc_20170810/ -g ~/Projects/miniTRK/Results/01_MRI/BrainExtraction/sub-GroupTempl_T1w.nii.gz -f ~/Projects/miniTRK/Results/01_MRI/GroupTempl/PDw/T_template0.nii.gz -w ~/Projects/miniTRK/Results/01_MRI/ASHS/GroupTempl/ -T -P

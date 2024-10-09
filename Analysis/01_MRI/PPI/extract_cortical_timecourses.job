@@ -1,0 +1,11 @@
+#!/bin/bash
+
+module load fsl
+
+IN_PATH="/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/PPI/anatomical/left_angular/FirstLevel/%PARTICIPANT%_task-%TASK%_acq-%ACQ%_run-%NRUN%.feat"
+OUT_PATH="/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/PPI"
+
+for roi in left_angular right_angular left_supramarginal right_supramarginal left_middle_frontal right_middle_frontal;
+  do
+    fslmeants -i ${IN_PATH}/filtered_func_data.nii.gz -o ${OUT_PATH}/timecourses/%PARTICIPANT%_%TASK%_%ACQ%_%NRUN%_${roi}_timecourse.txt -m ${IN_PATH}/reg/freesurfer/${roi}.nii.gz
+done

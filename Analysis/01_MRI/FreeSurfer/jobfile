@@ -1,0 +1,6 @@
+#!/bin/bash
+#SBATCH --output /home/mpib/nemecz/logs/slurm-%j.out
+#SBATCH --cpus-per-task 6
+#SBATCH --mem 4GB
+module load freesurfer/7.4.1
+recon-all -openmp 6 -threads 6 -all -i /home/mpib/nemecz/Projects/miniTRK/Data/01_MRI/bids/sub-982595/anat/sub-??????_T1w.nii.gz -subjid 982595 -sd /home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/FreeSurfer

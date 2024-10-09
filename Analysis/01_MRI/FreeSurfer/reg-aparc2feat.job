@@ -1,0 +1,37 @@
+#!/bin/bash
+
+module load fsl
+module load freesurfer/7.4.1
+
+WORKING_DIR="/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/PPI/anatomical/left_angular/FirstLevel"
+
+export SUBJECTS_DIR="/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/FreeSurfer"
+
+reg-feat2anat --feat ${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat --subject %PARTICIPANT%
+aseg2feat --feat ${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat --seg aparc.a2009s+aseg
+
+# create ROIs
+
+# 11125  ctx_lh_G_pariet_inf-Angular
+fslmaths ${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/aparc.a2009s+aseg.nii.gz -thr 11125 -uthr 11125 \
+${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/left_angular.nii.gz
+
+# 12125  ctx_rh_G_pariet_inf-Angular
+fslmaths ${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/aparc.a2009s+aseg.nii.gz -thr 12125 -uthr 12125 \
+${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/right_angular.nii.gz
+
+# 11126  ctx_lh_G_pariet_inf-Supramar
+fslmaths ${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/aparc.a2009s+aseg.nii.gz -thr 11126 -uthr 11126 \
+${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/left_supramarginal.nii.gz
+
+# 12126  ctx_rh_G_pariet_inf-Supramar
+fslmaths ${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/aparc.a2009s+aseg.nii.gz -thr 12126 -uthr 12126 \
+${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/right_supramarginal.nii.gz
+
+# 11115  ctx_lh_G_front_middle
+fslmaths ${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/aparc.a2009s+aseg.nii.gz -thr 11115 -uthr 11115 \
+${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/left_middle_frontal.nii.gz
+
+# 12115  ctx_rh_G_front_middle
+fslmaths ${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/aparc.a2009s+aseg.nii.gz -thr 12115 -uthr 12115 \
+${WORKING_DIR}/%PARTICIPANT%_task-%TASK%_acq-ENC_run-%NRUN%.feat/reg/freesurfer/right_middle_frontal.nii.gz

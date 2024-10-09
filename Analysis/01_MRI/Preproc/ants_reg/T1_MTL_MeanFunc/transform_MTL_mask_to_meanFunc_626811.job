@@ -1,0 +1,18 @@
+#!/bin/bash
+
+exampleFunc_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/fMRI_Preproc/UNIVAR/GROUP_SPACE'
+
+OUT_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/ANTS_REG'
+
+module load ants
+
+#Apply inverse transforms to MTL mask
+antsApplyTransforms \
+-d 3 \
+-o ${OUT_PATH}/MTL_MeanFunc/626811_MTL_mask_to_MeanFunc.nii.gz \
+-i ${OUT_PATH}/T1_to_MNI/626811/626811_MTL_mask-To-T1.nii.gz \
+-n GenericLabel \
+-r ${exampleFunc_PATH}/626811/626811_task-OBJ_acq-ENC_run-1.feat/mean_func_corrected_brain.nii.gz \
+-t [${OUT_PATH}/ROIs/626811/C-mask_626811_meanFunc-To-T1_0GenericAffine.mat, 1] \
+-t ${OUT_PATH}/ROIs/626811/C-mask_626811_meanFunc-To-T1_1InverseWarp.nii.gz 
+

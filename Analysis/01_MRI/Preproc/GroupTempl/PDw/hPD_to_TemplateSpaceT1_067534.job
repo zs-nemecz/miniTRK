@@ -1,0 +1,24 @@
+#!/bin/bash
+
+module load ants
+
+#naming
+MOVING1='TemplateSpaceT1'
+FIXED1='hPD'
+
+#set paths
+OUT_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/GroupTempl/PDw/T1_to_hPD'
+TEMPLATE_WD='/home/mpib/nemecz/Projects/miniTRK/Analysis/01_MRI/Preproc/GroupTempl/PDw'
+hPD_PATH='/home/mpib/nemecz/Projects/miniTRK/Data/01_MRI/bids'
+T1_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/GroupTempl/T1w'
+
+########################################################################################################
+FIXED_INPUT1=${hPD_PATH}/sub-067534/anat/sub-067534_acq-highres_PDw.nii.gz
+MOVING_INPUT1=${T1_PATH}/T_template0POS_sub-067534_T1w*WarpedToTemplate.nii.gz
+
+## Register T1 to hPD with affine transformation
+antsRegistrationSyNQuick.sh -d 3 -f ${FIXED_INPUT1} -m ${MOVING_INPUT1} -t s -o ${OUT_PATH}/067534_${MOVING1}-To-${FIXED1}_
+
+## Move Inverse Warped Image to the Analysis folder
+## (This is where we make the template)
+cp ${OUT_PATH}/067534_${MOVING1}-To-${FIXED1}_InverseWarped.nii.gz ${TEMPLATE_WD}

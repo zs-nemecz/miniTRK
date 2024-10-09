@@ -1,0 +1,12 @@
+#!/bin/bash
+
+hPD_PATH='/home/mpib/nemecz/Projects/miniTRK/Data/01_MRI/bids'
+meanFunc_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/fMRI_Preproc/UNIVAR/GROUP_SPACE'
+
+module load ants
+
+# 1. EPI
+echo EPI $SUBJECT_ID
+EPI="${meanFunc_PATH}/${SUBJECT_ID}/${SUBJECT_ID}_task-${TASK}_acq-ENC_run-${NRUN}.feat/mean_func"
+N4BiasFieldCorrection -d 3 -s 4 -b [ 180 ] -i ${EPI}.nii.gz -o [ ${EPI}_corrected_brain.nii.gz, ${EPI}_BiasField.nii.gz ]
+ls ${meanFunc_PATH}/${SUBJECT_ID}/${SUBJECT_ID}_task-${TASK}_acq-ENC_run-${NRUN}.feat/mean_func*

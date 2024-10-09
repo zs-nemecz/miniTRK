@@ -1,6 +1,7 @@
 Data/*
 Results/*
 *.fsf
+*.bak
 *.txt
 *.nii.gz
 *.nii

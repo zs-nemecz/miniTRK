@@ -1,0 +1,7 @@
+#!/bin/bash
+
+module load freesurfer/7.4.1
+
+IN_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/BrainExtraction'
+
+mri_synthstrip -i ${IN_PATH}/T*_sub-%PARTICIPANT%_T1wRepaired.nii.gz -o ${IN_PATH}/T_template0POS_sub-%PARTICIPANT%_T1wRepaired_brain.nii.gz -m ${IN_PATH}/T_template0POS_sub-%PARTICIPANT%_T1wRepaired_mask.nii.gz

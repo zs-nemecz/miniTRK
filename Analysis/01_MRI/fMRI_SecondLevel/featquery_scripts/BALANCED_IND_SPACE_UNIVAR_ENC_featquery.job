@@ -1,0 +1,36 @@
+#!/bin/bash
+
+module load fsl
+
+SECOND_LEVEL_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/fMRI_SecondLevel/UNIVAR/IND_SPACE/BALANCED'
+ANTS_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/ANTS_REG/ROIs'
+
+ROI="${ANTS_PATH}/%SUBJ%/C-mask_%SUBJ%_%HEMI%_%MASK%-To-meanFunc.nii.gz"
+#MASK2="${ANTS_PATH}/%SUBJ%/roiXmam/%HEMI%_%MASK%_%TASK%.nii.gz"
+
+#for MASK in ${MASK1} ${MASK2}; do
+
+echo "GFEAT: %SUBJ%_ENC_%TASK%"
+echo "MASK:"
+echo ${ROI}
+
+featquery 12 \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope1.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope2.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope3.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope4.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope5.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope6.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope7.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope8.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope9.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope10.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope11.feat \
+${SECOND_LEVEL_PATH}/%SUBJ%/%SUBJ%_ENC_%TASK%.gfeat/cope12.feat \
+1  stats/pe1 \
+corrected_%HEMI%_%MASK% \
+-p -s ${ROI}
+
+echo ${ROI} >> ${SECOND_LEVEL_PATH}/ENC_featquery_log.csv
+
+#done

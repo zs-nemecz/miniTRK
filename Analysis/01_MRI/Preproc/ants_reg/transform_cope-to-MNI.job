@@ -1,0 +1,27 @@
+#!/bin/bash
+
+module load ants
+
+OUT_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/ANTS_REG'
+T1_PATH='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/BrainExtraction'
+COPE='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/fMRI_ThirdLevel/%VERSION_OUT%/ENC_%TASK%/COPE%COPE_NUMBER%.gfeat'
+COPE_OUT='/home/mpib/nemecz/Projects/miniTRK/Results/01_MRI/fMRI_ThirdLevel/%VERSION_OUT%/ENC_%TASK%'
+
+## 1. Clster masks
+antsApplyTransforms \
+-d 3 \
+-i ${COPE}/cope1.feat/cluster_mask_zstat1.nii.gz \
+-o ${COPE_OUT}/MNI_COPE%COPE_NUMBER%_cluster_mask_zstat1.nii.gz.nii.gz \
+-n GenericLabel \
+-r ${OUT_PATH}/MNI152_T1_1mm_brain.nii.gz \
+-t ${OUT_PATH}/T1_to_MNI/GroupTempl/GroupTempl_T1-To-MNI_0GenericAffine.mat \
+-t ${OUT_PATH}/T1_to_MNI/GroupTempl/GroupTempl_T1-To-MNI_1Warp.nii.gz
+
+## Thresholded zstat
+antsApplyTransforms \
+-d 3 \
+-i ${COPE}/cope1.feat/thresh_zstat1.nii.gz \
+-o ${COPE_OUT}/MNI_COPE%COPE_NUMBER%_thresh_zstat1.nii.gz \
+-r ${OUT_PATH}/MNI152_T1_1mm_brain.nii.gz \
+-t ${OUT_PATH}/T1_to_MNI/GroupTempl/GroupTempl_T1-To-MNI_0GenericAffine.mat \
+-t ${OUT_PATH}/T1_to_MNI/GroupTempl/GroupTempl_T1-To-MNI_1Warp.nii.gz

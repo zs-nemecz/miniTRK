@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+#
+module load ants
+
+# template based on hPD_EPI/versionC-mask_ants_ROIs_to_meanFunc_2023-05-09.sh, originating from RegOptimization_2023-05-09
+
+OUT_PATH='../../../../../Results/01_MRI/ANTS_REG/ROIs'
+exampleFunc_PATH='../../../../../Results/01_MRI/fMRI_Preproc/UNIVAR'
+ASHS_PATH='../../../../../Results/01_MRI/ASHS/UPENN_Atlas/ASHS_UPENN_wholebrain_T1/masks_in_use'
+
+################################################################################################
+FIXED1='hPD'
+MOVING1='T1'
+FIXED2='T1'
+MOVING2='meanFunc'
+
+VERSION='C-mask'
+REFERENCE=${exampleFunc_PATH}/%SUBJ%/%SUBJ%_task-OBJ_acq-ENC_run-1.feat/mean_func_corrected_brain.nii.gz
+########################################################################################################
+
+for hemi in left right; do
+  for mask in CA1 CA3DG SUB ERC PRC PHC; do
+  # logging
+  echo %SUBJ% ${mask} ${hemi} UPENN
+
+  # /01_MRI/ASHS/UPENN_Atlas/ASHS_UPENN_wholebrain_T1/masks_in_use/067534_left_BA35_mask.nii.gz
+  # Results/01_MRI/ANTS_REG/ROIs/067534/C-mask_067534_right_SUB-To-meanFunc.nii.gz
+  ## Appy transforms
+
+    antsApplyTransforms \
+    -d 3 \
+    -i ${ASHS_PATH}/%SUBJ%_${hemi}_${mask}_mask.nii.gz \
+    -r ${REFERENCE} \
+    -t [${OUT_PATH}/%SUBJ%/${VERSION}_%SUBJ%_${MOVING2}-To-${FIXED2}_0GenericAffine.mat, 1] \
+    -t ${OUT_PATH}/%SUBJ%/${VERSION}_%SUBJ%_${MOVING2}-To-${FIXED2}_1InverseWarp.nii.gz \
+    -t [${OUT_PATH}/%SUBJ%/%SUBJ%_${MOVING1}-To-${FIXED1}_0GenericAffine.mat, 1] \
+    -n GenericLabel \
+    -o ${OUT_PATH}/%SUBJ%/${VERSION}_%SUBJ%_${hemi}_${mask}-To-${MOVING2}.nii.gz
+
+  done
+done
